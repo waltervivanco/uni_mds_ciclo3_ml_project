@@ -1,18 +1,18 @@
-# UNI MDS MLOps Final Project - WA1200
+# Proyecto Final MLOps UNI MDS - WA1200
 
-This repository contains the end-to-end workflow for a final MLOps project using WA1200 engine telemetry data.
+Este repositorio contiene el flujo end-to-end del proyecto final de MLOps usando telemetria del motor WA1200.
 
-## 1. Problem Definition
+## 1. Definicion del problema
 
-The use case is binary classification:
+El caso de uso es de clasificacion binaria:
 
-- Target: `High_Consumption`
-- Goal: predict high fuel consumption events from engine telemetry.
-- Business value: early detection of inefficient operating conditions for monitoring and maintenance decisions.
+- Objetivo (`target`): `High_Consumption`
+- Meta: predecir eventos de alto consumo de combustible a partir de telemetria del motor.
+- Valor de negocio: detectar de forma temprana condiciones ineficientes de operacion para apoyar monitoreo y mantenimiento.
 
-`High_Consumption` is defined from fuel rate percentile (P90) during experimentation.
+`High_Consumption` se define con el percentil 90 (P90) del indice de combustible instantaneo durante la etapa de experimentacion.
 
-## 2. Project Structure
+## 2. Estructura del proyecto
 
 ```text
 .
@@ -31,9 +31,9 @@ The use case is binary classification:
 |- README.md
 ```
 
-## 3. Setup
+## 3. Configuracion del entorno
 
-From project root:
+Desde la raiz del proyecto:
 
 ```powershell
 python -m venv .venv
@@ -41,68 +41,68 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 4. Data Preparation
+## 4. Preparacion de datos
 
-Run:
+Ejecutar:
 
 ```powershell
 python src/data_preparation.py
 ```
 
-Input:
+Entrada:
 
 - `data/raw/TL-20240723-202614 WA1200 #05.csv`
 
-Output:
+Salida:
 
 - `data/processed/wa1200_eda_ready.csv`
 
-## 5. Train Baseline Models
+## 5. Entrenamiento de modelos base
 
-Run:
+Ejecutar:
 
 ```powershell
 python src/train.py
 ```
 
-Outputs:
+Artefactos generados:
 
 - `artifacts/models/baseline_model.joblib`
 - `artifacts/meta/feature_columns.joblib`
 - `artifacts/meta/baseline_metrics.json`
 
-## 6. Model Serving (FastAPI)
+## 6. Despliegue del modelo (FastAPI)
 
-Run API:
+Levantar API:
 
 ```powershell
 uvicorn src.serving:app --host 0.0.0.0 --port 8000
 ```
 
-Open docs:
+Documentacion interactiva:
 
 - `http://localhost:8000/docs`
 
-Prediction endpoint:
+Endpoint de prediccion:
 
 - `POST /predict`
 
-## 7. Notebook Experiments
+## 7. Notebook de experimentacion
 
-Primary experimentation notebook:
+Notebook principal:
 
 - `notebooks/01_EDA_WA1200.ipynb`
 
-Contains:
+Incluye:
 
-- EDA
-- preprocessing
-- feature selection
-- baseline model training
-- metrics and artifact export
+- Analisis exploratorio (EDA)
+- Preprocesamiento
+- Seleccion de variables
+- Entrenamiento de modelos base
+- Metricas y exportacion de artefactos
 
-## 8. Delivery Notes
+## 8. Notas de entrega
 
-- Use this repository URL for final submission.
-- Keep work in main branch for final delivery.
-- Optional branches can be used for development and merged by PR.
+- Usar la URL de este repositorio para la entrega final.
+- Mantener la version final en la rama `main`.
+- Se pueden usar ramas de trabajo y luego integrar por Pull Request.

@@ -1,0 +1,23 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+*.log
+.DS_Store
+Thumbs.db
+
+# Jupyter runtime/cache
+*.nbconvert.ipynb
+
+# Artifacts can be regenerated
+artifacts/
+
+# Keep processed data by choice; exclude raw if sensitive
+# data/raw/
+Examen FINAL de MLOPS/
+PDF - MLOPS/
+Examen FINAL de MLOPS/
+PDF - MLOPS/

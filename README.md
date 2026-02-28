@@ -143,6 +143,22 @@ El modelo usa como base el `Indice de Combustible Instantaneo [gph]` y define el
 
 En palabras de negocio: el modelo marca como "alto consumo" el 10% de eventos con mayor consumo instantaneo del periodo analizado.
 
+### Definicion explicita de X e Y (para evitar confusion)
+
+- `Y` (variable objetivo): `High_Consumption` (0/1), creada con la regla del P90 explicada arriba.
+- `X` (variables de entrada al modelo): variables numericas operativas del equipo (rpm, temperaturas, presiones, carga, etc.).
+
+Regla importante:
+
+- La variable de combustible instantaneo (`fuel_rate_gph` / `Indice de Combustible Instantaneo [gph]`) se usa solo para construir `Y`.
+- Esa variable se elimina de `X` antes de entrenar para evitar leakage.
+
+En resumen:
+
+- Entrenamiento: el modelo aprende `Y` usando solo `X`.
+- Inferencia/API: el modelo recibe `X` y predice si hay `High_Consumption`.
+- Lista exacta de `X` usada en produccion: `artifacts/meta/feature_columns.joblib`.
+
 ## 7. Entrenamiento de modelos base
 
 Ejecutar:

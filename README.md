@@ -101,8 +101,4 @@ Incluye:
 - Entrenamiento de modelos base
 - Metricas y exportacion de artefactos
 
-## 8. Notas de entrega
 
-- Usar la URL de este repositorio para la entrega final.
-- Mantener la version final en la rama `main`.
-- Se pueden usar ramas de trabajo y luego integrar por Pull Request.
